@@ -1,127 +1,53 @@
-.head{
-
-  width: 80%;
-
-  .coverpicture {
-
-    img {
-      height: 400px;
-      margin-left: 140px;
-      width: 100%;
-      position: relative;
-      box-shadow: 0 0 0 2px white;
-      z-index: -1;
-    }
-
-  }
-
-  #blah{
-    display: none;
-    position: absolute;
-    height: 400px;
-    margin-left: 140px;
-    width: 80%;
-    z-index: 10;
-    top: 72px;
-    box-shadow: 0 0 0 2px white;
-  }
-
-  #sub_button1{
-    margin-left: 30px;
-    //display: none;
-  }
-
-  #sub_button2{
-    margin-left: 30px;
-    //display: none;
-  }
-
-  .image{
-    width: 250px;
-    height: 250px;
-    box-shadow: 0 0 5px 8px black;
-    left: 180px;
-    top: 240px;
-    margin-bottom: 20px;
-    position: absolute;
-    z-index: 20;
-
-    img{
-      width: 250px;
-      height: 250px;
-
-    }
-
-    //img:hover{
-    //  width: 250px;
-    //  height: 250px;
-    //  box-shadow: 0 0 5px 8px black;
-    //  left: 180px;
-    //  top: 240px;
-    //  margin-bottom: 20px;
-    //  position: absolute;
-    //  z-index: 300;
-    //}
-
-
-
-  }
-
-  #blaaah{
-    display: none;
-    width: 250px;
-    height: 250px;
-    box-shadow: 0 0 5px 8px black;
-    left: 180px;
-    top: 240px;
-    margin-bottom: 20px;
-    position: absolute;
-    z-index: 40;
-  }
+#map {
+  height: 250px;
+  width: 70%;
 }
 
-.main {
-  display: flex;
-  flex: auto;
-  width: 80%;
-
-  .left{
-    flex-grow: 1;
-
-    .feed{
-      margin: 20px;
-      margin-left: 40px;
-      border-top: 1px sandybrown;
-
-      .information{
-        margin: 10px;
-
-        h5{
-          background-color:lightskyblue ;
-          font-size: large;
-          font-weight: 400;
-          padding: 10px;
-          margin: 2px;
-        }
-      }
-
-    }
-  }
-
-  .center{
-    flex-grow: 1;
-  }
-
-  .right{
-    flex-grow: 1;
-    h5{
-      background-color:lightskyblue ;
-      font-size: large;
-      font-weight: 400;
-      padding: 10px;
-      margin: 2px;
-    }
-  }
 
 
-}
+//
+//.main {
+//  display: flex;
+//  flex: auto;
+//  width: 80%;
+//
+//  .left{
+//    flex-grow: 1;
+//
+//    .feed{
+//      margin: 20px;
+//      margin-left: 40px;
+//      border-top: 1px sandybrown;
+//
+//      .information{
+//        margin: 10px;
+//
+//        h5{
+//          background-color:lightskyblue ;
+//          font-size: large;
+//          font-weight: 400;
+//          padding: 10px;
+//          margin: 2px;
+//        }
+//      }
+//
+//    }
+//  }
+//
+//  .center{
+//    flex-grow: 1;
+//  }
+//
+//  .right{
+//    flex-grow: 1;
+//    h5{
+//      background-color:lightskyblue ;
+//      font-size: large;
+//      font-weight: 400;
+//      padding: 10px;
+//      margin: 2px;
+//    }
+//  }
+//
+//
+//}

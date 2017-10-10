@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post 'userdetail/create'
   root 'home#homepage'
   get '/home/index' => "home#index"
+  post 'home/upvote'=>"home#upvote"
+  post 'home/downvote'=>"home#downvote"
 
 resources :home do
   get :autocomplete_userdetail_name, :on => :collection

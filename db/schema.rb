@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010122825) do
+ActiveRecord::Schema.define(version: 20171010165657) do
 
   create_table "orgcategories", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20171010122825) do
     t.string   "mobilenum"
     t.string   "profile_picture"
     t.string   "coverpic"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "userdetails", ["user_id"], name: "index_userdetails_on_user_id"

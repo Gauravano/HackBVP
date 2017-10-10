@@ -3,7 +3,6 @@ class HomeController < ApplicationController
 
 	def index
 		@user = Userdetail.where(user_id: current_user.id)
-		byebug
 		unless(@user[0])
 			redirect_to '/userdetails/new'
 		end

@@ -10,9 +10,13 @@
 	align-item: centre;
 	div{
 		width: 33%;
+		justify-content: space-around;
+		align-item: centre;
+		display: flex;
 		align-item: centre;
 	}
 }
-#body{
-	background-color: #fafafa;
+#data{
+	background-color: #e7edf1;
+	height: 100vh;
 }

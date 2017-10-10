@@ -1,11 +1,18 @@
 <div id="header">
 	<div>
-	<h3>LOGO</h3>
-		
+		<div>
+			<h3>LOGO</h3>
+		</div>
 	</div>
-	<div>
-		
-	</div>
+	<!-- <div class="row"> -->
+		<div class="row">
+        <div class="input-field col">
+          <input id="password" type="password" class="validate">      <i class="material-icons">search</i>
+
+          <label for="password">Search</label>
+        </div>
+      </div>
+	<!-- </div> -->
 	<div>
 		<a class="waves-effect waves-light btn" href="/home/index">Login or Sign Up</a>
 
@@ -18,38 +25,38 @@
 </div>
 <script type="text/javascript">
 
-var httpRequest = new XMLHttpRequest();
-var element = document.getElementById('data');
-httpRequest.onreadystatechange = function(){
- 	console.log("request was completed");
- 	console.log(httpRequest.readyState);
- 	console.log(httpRequest.status);
+	var httpRequest = new XMLHttpRequest();
+	var element = document.getElementById('data');
+	httpRequest.onreadystatechange = function(){
+		console.log("request was completed");
+		console.log(httpRequest.readyState);
+		console.log(httpRequest.status);
 
 
- 	if(httpRequest.readyState > 0)
+		if(httpRequest.readyState > 0)
 
- 	{
- 	element.innerHTML = "Loading";
- 	}
+		{
+			element.innerHTML = "Loading";
+		}
 
 
- 	if(httpRequest.readyState >= 2){
- 		element.innerHTML = "DONE";
+		if(httpRequest.readyState >= 2){
+			element.innerHTML = "DONE";
 
- 	}
+		}
 
- 	if(httpRequest.readyState > 3){
- 		if (httpRequest.status === 200){
- 			console.log(JSON.parse(httpRequest.responseText));
- 			element.innerHTML = httpRequest.responseText;
- 		}else{
- 			 			element.innerHTML = "Error";
+		if(httpRequest.readyState > 3){
+			if (httpRequest.status === 200){
+				console.log(JSON.parse(httpRequest.responseText));
+				element.innerHTML = httpRequest.responseText;
+			}else{
+				element.innerHTML = "Error";
 
- 		}
- 	}
+			}
+		}
 
- };
-httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
-httpRequest.send();
+	};
+	httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
+	httpRequest.send();
 
 </script>

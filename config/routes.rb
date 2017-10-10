@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :prices
   resources :userdetails
   devise_for :users
-  root 'home#index'
   get 'home/profile' => 'home#profile' ,as:'user_profile'
   post 'home/upload_image'
   post 'home/upload_coverpic'
@@ -11,6 +10,9 @@ Rails.application.routes.draw do
   root 'home#homepage'
   get '/home/index' => "home#index"
 
+resources :home do
+  get :autocomplete_userdetail_name, :on => :collection
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

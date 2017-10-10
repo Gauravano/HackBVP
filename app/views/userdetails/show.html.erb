@@ -1,20 +1,45 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<script type="text/javascript">
+	Materialize.toast('<%= notice %>', 4000)
+</script>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @userdetail.name %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @userdetail.address %>
-</p>
+<div class="row">
+	<div class="col s12 m6" style="margin: auto;">
+		<div class="card grey lighten-2">
+			<div class="card-content black-text">
+				<h1 class="card-title" style="text-align: center;font-size: 48px;">Your Details</h1>
+				<h5>
+					<strong>Name:</strong>
+					<%= @userdetail.name %>
+				</h5>
 
-<p>
-  <strong>User:</strong>
-  <%= @userdetail.user %>
-</p>
-<a href="/home/index" class="waves-effect waves-light btn">continue</a>
+				<h5>
+					<strong>Address:</strong>
+					<%= @userdetail.address %>
+				</h5>
 
-<%= link_to 'Edit', edit_userdetail_path(@userdetail) %> |
-<%= link_to 'Back', userdetails_path %>
+				<h5>
+					<strong>Mobile Number:</strong>
+					<%= @userdetail.mobilenum %>
+				</h5>
+				<h5>
+					<strong>Number of Slots:</strong>
+					<%= @userdetail.numslots %>
+				</h5>
+			</div>
+			<div class="card-action">
+				<a href="/home/index" class="waves-effect waves-light grey darken-2 btn">Continue</a>
+
+				<%= link_to 'Edit', edit_userdetail_path(@userdetail), class:  "waves-effect waves-light grey darken-2 btn"%> 
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+

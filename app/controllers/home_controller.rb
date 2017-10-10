@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+     autocomplete :userdetail, :name
 	before_action :authenticate_user!, only: [:index]
 
 	def index

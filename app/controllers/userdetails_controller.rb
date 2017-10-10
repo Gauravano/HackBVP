@@ -25,6 +25,9 @@ class UserdetailsController < ApplicationController
   # POST /userdetails.json
   def create
     @userdetail = Userdetail.new(userdetail_params)
+    vacant = params[:userdetail][:numslots]
+    byebug
+    @userdetail.numvacant = vacant
 
     respond_to do |format|
       if @userdetail.save
@@ -69,6 +72,6 @@ class UserdetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userdetail_params
-      params.require(:userdetail).permit(:name, :address, :user_id)
+      params.require(:userdetail).permit(:name, :address, :user_id, :numslots)
     end
 end

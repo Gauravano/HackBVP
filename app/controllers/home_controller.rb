@@ -4,7 +4,6 @@ class HomeController < ApplicationController
 
 	def index
 		@user = Userdetail.where(user_id: current_user.id)
-		byebug
 		unless(@user[0])
 			redirect_to '/userdetails/new'
 		end
@@ -21,7 +20,6 @@ class HomeController < ApplicationController
     # @latitude  = Geocoder.coordinates(Userdetail.where(user_id: current_user.id)[0].address)
     @latitude  = Geocoder.coordinates(  :"bvp,paschim vihar,delhi")[0]
     @longitude =  Geocoder.coordinates(:"bvp,paschim vihar,delhi")[1]
-    byebug
   end
 
   def upload_image

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :prices
   resources :userdetails
   devise_for :users
+  get 'userdetail/index'
+  post 'userdetail/create'
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,7 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010094047) do
+ActiveRecord::Schema.define(version: 20171010114311) do
+
+  create_table "orgcategories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "userdetails_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "orgcategories", ["userdetails_id"], name: "index_orgcategories_on_userdetails_id"
+
+  create_table "prices", force: :cascade do |t|
+    t.integer  "cost"
+    t.string   "category"
+    t.integer  "userdetails_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "prices", ["userdetails_id"], name: "index_prices_on_userdetails_id"
+
+  create_table "userdetails", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "numslots"
+    t.integer  "numvacant"
+    t.string   "mobilenum"
+  end
+
+  add_index "userdetails", ["user_id"], name: "index_userdetails_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

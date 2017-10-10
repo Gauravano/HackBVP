@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :prices
+  resources :userdetails
   devise_for :users
   root 'home#index'
 

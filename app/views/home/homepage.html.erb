@@ -61,12 +61,7 @@ httpRequest.onreadystatechange = function(){
 
 		}
 
-		if(httpRequest.readyState > 3){
-			if (httpRequest.status === 200){
-				console.log(JSON.parse(httpRequest.responseText));
-				element.innerHTML = httpRequest.responseText;
-			}else{
-				element.innerHTML = "Error";
+
  	if(httpRequest.readyState > 3){
  		if (httpRequest.status === 200){
  			console.log(JSON.parse(httpRequest.responseText));
@@ -81,11 +76,6 @@ httpRequest.onreadystatechange = function(){
 
 			}
 		}
-
-	};
-	httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
-	httpRequest.send();
-
  };
 httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
 httpRequest.send();

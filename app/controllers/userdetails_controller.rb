@@ -26,9 +26,10 @@ class UserdetailsController < ApplicationController
   def create
     @userdetail = Userdetail.new(userdetail_params)
     vacant = params[:userdetail][:numslots]
-    byebug
+    @userdetail.latitude  = Geocoder.coordinates(params[:userdetail][:address])[0]
+    @userdetail.longitude  = Geocoder.coordinates(params[:userdetail][:address])[1]
     @userdetail.numvacant = vacant
-
+    byebug
     respond_to do |format|
       if @userdetail.save
         format.html { redirect_to @userdetail, notice: 'Userdetail was successfully created.' }
@@ -72,6 +73,6 @@ class UserdetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userdetail_params
-      params.require(:userdetail).permit(:name, :address, :user_id, :numslots)
+      params.require(:userdetail).permit(:name, :address, :user_id, :numslots,:mobilenum)
     end
 end

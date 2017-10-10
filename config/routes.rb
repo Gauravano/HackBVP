@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post 'userdetail/create'
   root 'home#homepage'
   get '/home/index' => "home#index"
+  post 'home/upvote'=>"home#upvote"
+  post 'home/downvote'=>"home#downvote"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

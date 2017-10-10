@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010114311) do
+ActiveRecord::Schema.define(version: 20171010122825) do
 
   create_table "orgcategories", force: :cascade do |t|
     t.string   "name"
@@ -36,11 +36,13 @@ ActiveRecord::Schema.define(version: 20171010114311) do
     t.string   "name"
     t.string   "address"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "numslots"
     t.integer  "numvacant"
     t.string   "mobilenum"
+    t.string   "profile_picture"
+    t.string   "coverpic"
   end
 
   add_index "userdetails", ["user_id"], name: "index_userdetails_on_user_id"

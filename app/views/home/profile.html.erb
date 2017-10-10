@@ -1,0 +1,120 @@
+<div class="head">
+
+  <div class="coverpicture" >
+
+    <% if @user.coverpic %>
+        <img src="/uploads/<%= @user.coverpic %>" >
+
+    <% else %>
+        <%= image_tag("/uploads/backgr2.jpg") %>
+
+    <% end %>
+
+  </div>
+  <span>
+    <br><br><h4>Cover picture Update</h4>
+    <%= form_tag url_for(controller: :home, action: :upload_coverpic,method: :post), multipart: true do %>
+
+      <input id="profile_input1" name="image1" type="file"  />
+      <input type="submit" id="sub_button1" >
+        </span><br><br>
+      <img id="blah" src="#"  />
+      <script>
+
+          function readURL(input1) {
+              if (input1.files && input1.files[0]) {
+                  var reader1 = new FileReader();
+
+                  reader1.onload = function (event) {
+                      $('#blah').attr('src', event.target.result);
+                  };
+
+                  reader1.readAsDataURL(input1.files[0]);
+              }
+          }
+
+          $("#profile_input1").change(function () {
+              readURL(this);
+
+              $('#blah').css('display', 'block');
+//              $('#sub_button1').css('display', 'block');
+          });
+
+      </script>
+
+  <% end %>
+
+
+    <div class="image">
+      <% if @user.profile_picture %>
+          <img src="/uploads/<%= @user.profile_picture %>" >
+      <% else %>
+          <%= image_tag("/uploads/substitutionprofile.png") %>
+      <% end %>
+    </div>
+  <span>
+    <h4>Profile picture Update</h4>
+    <%= form_tag url_for(controller: :home, action: :upload_image,method: :post), multipart: true do %>
+      <input id="profile_input2" name="image2" type="file"  />
+      <input type="submit" id="sub_button2">
+        </span>
+        <img id="blaaah" src="#"  />
+
+      <script>
+          function myfun() {
+              document.getElementById('profile_input2').click();
+          }
+
+          function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                      $('#blaaah').attr('src', e.target.result);
+                  };
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+
+          $("#profile_input2").change(function () {
+              readURL(this);
+
+              $('#blaaah').css('display', 'block');
+//              $('#sub_button2').css('display', 'block');
+          });
+
+      </script>
+  <% end %>
+
+    <!--<button onclick="myfun()">Change profile picture</button>-->
+    <!--<button onclick="myfun()">Change profile picture</button>-->
+
+    </div>
+
+<div class="main">
+  <div class="left">
+
+    <div class="feed">
+      <h2>Your Activity Stats</h2><br>
+      <div class="information">
+        <h5> Total Parking Slots:   <%= @user.numslots %></h5><br>
+        <h5> Empty Parking Slots:   <%= @user.numvacant %></h5><br>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <div class="upper">
+      <div class="naming"></div>
+
+    </div>
+    <div class="lower"></div>
+  </div>
+  <div class="right">
+    <h2>Your Details</h2><br>
+    <h5>User Name:  <%= @user.name %></h5><br>
+    <h5>Email: <%= current_user.email %></h5><br>
+  </div>
+</div>
+
+

@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :prices
   resources :userdetails
   devise_for :users
+  root 'home#index'
+  get 'home/profile' => 'home#profile' ,as:'user_profile'
+  post 'home/upload_image'
+  post 'home/upload_coverpic'
+  get 'userdetail/index'
+  post 'userdetail/create'
   root 'home#homepage'
   get '/home/index' => "home#index"
 

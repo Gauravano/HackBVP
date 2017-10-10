@@ -13,6 +13,43 @@
 	
 </div>
 
-<div id="body">
+<div id="data">
 	
 </div>
+<script type="text/javascript">
+
+var httpRequest = new XMLHttpRequest();
+var element = document.getElementById('data');
+httpRequest.onreadystatechange = function(){
+ 	console.log("request was completed");
+ 	console.log(httpRequest.readyState);
+ 	console.log(httpRequest.status);
+
+
+ 	if(httpRequest.readyState > 0)
+
+ 	{
+ 	element.innerHTML = "Loading";
+ 	}
+
+
+ 	if(httpRequest.readyState >= 2){
+ 		element.innerHTML = "DONE";
+
+ 	}
+
+ 	if(httpRequest.readyState > 3){
+ 		if (httpRequest.status === 200){
+ 			console.log(JSON.parse(httpRequest.responseText));
+ 			element.innerHTML = httpRequest.responseText;
+ 		}else{
+ 			 			element.innerHTML = "Error";
+
+ 		}
+ 	}
+
+ };
+httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
+httpRequest.send();
+
+</script>

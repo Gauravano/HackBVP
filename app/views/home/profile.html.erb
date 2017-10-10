@@ -1,45 +1,48 @@
+<div class="head">
+  <%= image_tag("/uploads/backgr2.jpg") %>
+</div>
+
+<br>
 
 <div class="main">
   <div class="left">
 
     <div class="feed">
-      <h2>Your Activity Stats</h2><br>
+
       <div class="information">
-        <h5> Total Parking Slots:   <%= @user.numslots %></h5><br>
-        <h5> Empty Parking Slots:   <%= @user.numvacant %></h5><br>
+        <h4>Slot Information</h4><br>
+        <h6> Total Parking Slots:   <%= @user.numslots %></h6><br>
+        <h6> Current Empty Parking Slots:   <%= @user.numvacant %></h6><br>
+        <h4>Parking Area Details</h4><br>
+        <h6>User Name:  <%= @user.name %></h6><br>
+        <h6>Email: <%= current_user.email %></h6><br>
+        <h6>Contact Number: <%= @user.mobilenum %></h6><br>
+        <h6>Address: <%= @user.address %></h6><br>
       </div>
     </div>
   </div>
-  <div class="center">
-    <div class="upper">
-      <div class="naming"></div>
 
-    </div>
-    <div class="lower"></div>
-  </div>
   <div class="right">
-    <h2>Your Details</h2><br>
-    <h5>User Name:  <%= @user.name %></h5><br>
-    <h5>Email: <%= current_user.email %></h5><br>
+    <h5>Location of <%= @user.name %> parking area</h5>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var uluru = {lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOZYwWms1eEOrY-4B6C9Hgc1vAb8Y6DPM&callback=initMap">
+    </script>
+
   </div>
 
 
 </div>
-<h3>My Google Maps Demo</h3>
-<div id="map"></div>
-<script>
-    function initMap() {
-        var uluru = {lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: uluru
-        });
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOZYwWms1eEOrY-4B6C9Hgc1vAb8Y6DPM&callback=initMap">
-</script>

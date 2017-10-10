@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+     autocomplete :userdetail, :name
 	before_action :authenticate_user!, only: [:index]
 
 	def index
@@ -15,6 +16,11 @@ class HomeController < ApplicationController
 
   def profile
     @user = Userdetail.where(user_id: current_user.id)[0]
+
+    # @latitude  = Geocoder.coordinates(Userdetail.where(user_id: current_user.id)[0].address)
+    @latitude  = Geocoder.coordinates(  :"bvp,paschim vihar,delhi")[0]
+    @longitude =  Geocoder.coordinates(:"bvp,paschim vihar,delhi")[1]
+    byebug
   end
 
   def upload_image

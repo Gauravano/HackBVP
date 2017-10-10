@@ -9,6 +9,57 @@ class HomeController < ApplicationController
 		end
 	end
 
+  def upvote
+
+    flag = false
+    @vacantup = Userdetail.where(user_id: current_user.id)[0]
+    if @vacantup.numvacant < 0
+      redirect_to '/',notice: 'Answer is successfully upvoted'
+    else
+        @vacantup.numvacant = @vacantup.numvacant - 1
+        @vacantup.save!
+        flag = true
+
+    end
+
+# @latitude  = Geocoder.coordinates(Userdetail.where(user_id: current_user.id)[0].address)
+    @latitude  = Geocoder.coordinates(  :"bvp,paschim vihar,delhi")[0]
+    @longitude =  Geocoder.coordinates(:"bvp,paschim vihar,delhi")[1]
+    respond_to do |format|
+      # format.html{
+      #   redirect_to '/',notice: 'Answer is successfully upvoted'
+      # }
+      format.js {
+        @count = @vacantup.numvacant
+        @check = flag
+      }
+    end
+
+  end
+
+  def downvotevote
+
+    flag = false
+    @vacantup = Userdetail.where(user_id: current_user.id)[0]
+    if @vacantup.numvacant > @vacantup.numslots
+      redirect_to '/',notice: 'Answer is successfully upvoted'
+    else
+      @vacantup.numvacant = @vacantup.numvacant + 1
+      @vacantup.save!
+      flag = true
+
+    end
+
+    respond_to do |format|
+      # format.html{
+      #   redirect_to '/',notice: 'Answer is successfully upvoted'
+      # }
+      format.js {
+        @count = @vacantup.numvacant
+        @check = flag
+      }
+    end
+  end
 
   def homepage
   	
@@ -16,36 +67,6 @@ class HomeController < ApplicationController
 
   def profile
     @user = Userdetail.where(user_id: current_user.id)[0]
-
-    # @latitude  = Geocoder.coordinates(Userdetail.where(user_id: current_user.id)[0].address)
-    @latitude  = Geocoder.coordinates(  :"bvp,paschim vihar,delhi")[0]
-    @longitude =  Geocoder.coordinates(:"bvp,paschim vihar,delhi")[1]
   end
 
-  def upload_image
-    uploaded_file = params[:image2]
-    filename = SecureRandom.hex+'.'+uploaded_file.original_filename.split('.')[1]
-    filepath = Dir.pwd+"/public/uploads/"+filename
-    File.open(filepath,'wb') do |file|
-      file.write(uploaded_file.read())
-    end
-    user = Userdetails.where(id == current_user.id)
-    user.profile_picture = filename
-    user.save!
-    return redirect_to '/home/profile'
-  end
-
-  def upload_coverpic
-    uploaded_file = params[:image1]
-    filename = SecureRandom.hex+'.'+uploaded_file.original_filename.split('.')[1]
-    filepath = Dir.pwd+"/public/uploads/"+filename
-    File.open(filepath,'wb') do |file|
-      file.write(uploaded_file.read())
-    end
-
-    user = Userdetails.where(id == current_user.id)
-    user.coverpic = filename
-    user.save!
-    return redirect_to '/home/profile'
-  end
 end

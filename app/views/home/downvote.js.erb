@@ -1,0 +1,9 @@
+
+$('#upvote').html("<%= @count %>");
+
+<% if @check == true %>
+noty({text: 'Slot is filled', type: 'alert'});
+<% else %>
+noty({text: 'No empty slots remaining ', type: 'notice'});
+<% end %>
+

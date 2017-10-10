@@ -1,5 +1,18 @@
 <div id="header">
 	<div>
+		<div>
+			<h3>LOGO</h3>
+		</div>
+	</div>
+	<!-- <div class="row"> -->
+		<div class="row">
+        <div class="input-field col">
+          <input id="password" type="password" class="validate">      <i class="material-icons">search</i>
+
+          <label for="password">Search</label>
+        </div>
+      </div>
+	<!-- </div> -->
 	<h3>LOGO</h3>	
 	</div>
 	<div class="searchbar">
@@ -19,6 +32,12 @@
 	
 </div>
 
+	var httpRequest = new XMLHttpRequest();
+	var element = document.getElementById('data');
+	httpRequest.onreadystatechange = function(){
+		console.log("request was completed");
+		console.log(httpRequest.readyState);
+		console.log(httpRequest.status);
 
 <script type="text/javascript">
 setInterval(function(){
@@ -30,17 +49,18 @@ httpRequest.onreadystatechange = function(){
  	console.log(httpRequest.status);
 
 
- 	if(httpRequest.readyState > 0)
+		if(httpRequest.readyState > 0)
 
- 	{
- 	element.innerHTML = "Loading";
- 	}
+		{
+			element.innerHTML = "Loading";
+		}
 
 
- 	if(httpRequest.readyState >= 2){
- 		element.innerHTML = "DONE";
+		if(httpRequest.readyState >= 2){
+			element.innerHTML = "DONE";
 
- 	}
+		}
+
 
  	if(httpRequest.readyState > 3){
  		if (httpRequest.status === 200){
@@ -54,9 +74,8 @@ httpRequest.onreadystatechange = function(){
  		}else{
  			 			element.innerHTML = "Error";
 
- 		}
- 	}
-
+			}
+		}
  };
 httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
 httpRequest.send();

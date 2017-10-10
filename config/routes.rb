@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :prices
   resources :userdetails
   devise_for :users
+  # root 'home#index'
+
   get 'home/profile' => 'home#profile' ,as:'user_profile'
   post 'home/upload_image'
   post 'home/upload_coverpic'
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
   post 'userdetail/create'
   root 'home#homepage'
   get '/home/index' => "home#index"
+  post 'home/upvote'=>"home#upvote"
+  post 'home/downvote'=>"home#downvote"
 
 resources :home do
   get :autocomplete_userdetail_name, :on => :collection

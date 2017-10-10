@@ -2,3 +2,7 @@
 <h1>h</h1>
 
 <%= link_to 'Edit', edit_userdetail_path(@user[0]) %> |
+
+              <%= link_to 'Upvote',url_for(controller: 'home', action: 'upvote'), method: :post,remote: true %><div id="upvote" > <%= @user[0].numvacant %></div>
+              <%= link_to 'Downvote',url_for(controller: 'home', action: 'downvote'), method: :post,remote: true %>
+

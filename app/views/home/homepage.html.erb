@@ -1,7 +1,7 @@
 <div id="header">
 	<div>
 		<!-- <div> -->
-			<h3>LOGO</h3>
+		<%=image_tag 'download.jpg'%>
 		<!-- </div> -->
 	</div>
 	
@@ -18,61 +18,68 @@
 	
 </div>
 
-<div id="data">
-	
+
+<div id="content">
 </div>
 
-var httpRequest = new XMLHttpRequest();
-var element = document.getElementById('data');
-httpRequest.onreadystatechange = function(){
-console.log("request was completed");
-console.log(httpRequest.readyState);
-console.log(httpRequest.status);
+ <style type="text/css">
+ 	.div-conatiner{
+ 		height: 200px;
+ 		width: 60%;
+ 		margin-left: 20%;
+ 		margin-right: 20%;
+ 		background-color: white;
+ 		padding: 50px;
+ 		margin-top: 30px;
+ 		box-sizing: border-box;
+ 		padding-top: 20px;
+ 		border: 1px solid lightgrey;
+ 	}
+ 	p{
+ 		font-size: 20px;
+ 	}
+ </style>
+
 
 <script type="text/javascript">
 	setInterval(function(){
 		var httpRequest = new XMLHttpRequest();
-		var element = document.getElementById('data');
+		
 		httpRequest.onreadystatechange = function(){
 			console.log("request was completed");
 			console.log(httpRequest.readyState);
 			console.log(httpRequest.status);
-
-
-			if(httpRequest.readyState > 0)
-
-			{
-				element.innerHTML = "Loading";
-			}
-
-
-			if(httpRequest.readyState >= 2){
-				element.innerHTML = "DONE";
-
-			}
-
-
-			
+		
 			if(httpRequest.readyState > 3){
 				if (httpRequest.status === 200){
+					 $('#content').empty();
 					console.log(JSON.parse(httpRequest.responseText));
 					var obj=JSON.parse(httpRequest.responseText);
+					 var htmlText = '';
 					for(var i=0;i<obj.data.organisation.length;i++)
 					{
-						element.innerHTML = element.innerHTML+"<br>"+obj.data.organisation[i].name+"<br>"+obj.data.organisation[i].numslots+"<br>"+obj.data.organisation[i].numvacant;
+				htmlText += '<div class="div-conatiner">';
+                htmlText += '<p class="p-name"> Name: ' + obj.data.organisation[i].name + '</p>';
+                htmlText += '<p class="p-loc"> No of Slot: ' + obj.data.organisation[i].numslots + '</p>';
+                htmlText += '<p class="p-desc"> No of Vacant Slot: ' + obj.data.organisation[i].numvacant + '</p>';
+                htmlText += '<p class="p-created"> Address: ' + obj.data.organisation[i].address + '</p>';
+                htmlText += '</div>';
+						
 
 					}
 				}else{
-					element.innerHTML = "Error";
+					/*element.innerHTML = "Error";*/
 
 				}
 			}
+			 $('#content').append(htmlText);
 
 		};
+
 		httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
 		httpRequest.send();
 
 		
 
-},3000);
+},2000);
 </script>

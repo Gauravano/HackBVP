@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :userdetails
   devise_for :users
   # root 'home#index'
-
-  get 'home/profile' => 'home#profile' ,as:'user_profile'
+  post 'home/search'
+  post 'home/profile' => 'home#profile' ,as:'user_profile'
   post 'home/upload_image'
   post 'home/upload_coverpic'
   get 'userdetail/index'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/home/index' => "home#index"
   post 'home/upvote'=>"home#upvote"
   post 'home/downvote'=>"home#downvote"
+  get '/home/profile' => "home#profile"
 
 resources :home do
   get :autocomplete_userdetail_name, :on => :collection

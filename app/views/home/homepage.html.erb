@@ -1,24 +1,27 @@
 <div id="header">
 	<div>
 		<!-- <div> -->
-		<%=image_tag 'download.jpg'%>
+		<%=image_tag 'logot.PNG'%>
 		<!-- </div> -->
+
 	</div>
 	
 	<div class="searchbar">
-		<%=form_tag '/homes/search' do %>
+		<%=form_tag '/home/profile' do %>
 		<%= autocomplete_field_tag 'userdetail', '', autocomplete_userdetail_name_home_index_path, :size => 75 ,id:"searchTerm"%> 
 		<%= submit_tag 'search',class: "searchButton"%>
 		<%end%>
 	</div>
 	<div>
+	<%if !current_user %>
 		<a class="waves-effect waves-light btn" href="/home/index">Login or Sign Up</a>
-
+<%else%>
+<a class="waves-effect waves-light btn" href="/home/index"><%=current_user.email%></a>
+<%= link_to "Sign Out",destroy_user_session_path,method: :delete , class: "waves-effect grey lighten-2 btn" %>
+<%end%>
 	</div>
 	
 </div>
-
-
 <div id="content">
 </div>
 
@@ -63,6 +66,7 @@
                 htmlText += '<p class="p-loc"> No of Slot: ' + obj.data.organisation[i].numslots + '</p>';
                 htmlText += '<p class="p-desc"> No of Vacant Slot: ' + obj.data.organisation[i].numvacant + '</p>';
                 htmlText += '<p class="p-created"> Address: ' + obj.data.organisation[i].address + '</p>';
+                
                 htmlText += '</div>';
 						
 
@@ -78,8 +82,6 @@
 
 		httpRequest.open('GET', 'http://localhost:3000/userdetail/index');
 		httpRequest.send();
-
-		
 
 },2000);
 </script>
